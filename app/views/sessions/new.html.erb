@@ -1,0 +1,17 @@
+<h1>ログイン</h1>
+<div>
+    <% if flash[:message] %>
+        <div><%= flash[:message] %></div>
+    <% end %>
+    <form method="post">
+        <div>
+            id: <input type="text" name="id" value="<%= flash[:id] %>" />
+        </div>
+        <div>
+            one time password: <input type="text" name="totp" />
+        </div>
+        <div>
+            <button type="submit">SEND</button>
+        </div>
+    </form>
+</div>
