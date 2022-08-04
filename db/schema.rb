@@ -15,10 +15,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_03_011402) do
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.string "totp_key"
+    t.string "totp_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["totp_key"], name: "index_users_on_totp_key", unique: true
+    t.index ["totp_id"], name: "index_users_on_totp_id", unique: true
   end
 
 end
