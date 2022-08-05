@@ -1,5 +1,4 @@
 class TopController < ApplicationController
-  def index
-    logged_in
-  end
+  before_action :logged_in
+  def index; end
 end

@@ -1,0 +1,2 @@
+module NicoHelper
+end
