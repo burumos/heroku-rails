@@ -1,0 +1,79 @@
+#nico-head-links {
+  margin-bottom: 1.5rem;
+}
+
+/* 検索フォーム */
+#nico-search-form {
+  margin-bottom: 2rem;
+}
+#nico-search-form .label-cell {
+  padding-right: 1rem;
+}
+#nico-search-form input {
+  margin-top: 0.3rem;
+}
+
+/* 検索条件リスト */
+#condition-row-format {
+  display: none;
+}
+.condition-row {
+  margin-bottom: 1rem;
+  padding-bottom: 0.3rem;
+  line-height: 2.4rem;
+}
+.condition-row .apply-button {
+  background-color: #dfdfdf;
+  padding: 5px 2px;
+  margin-right: 8px;
+  border-radius: 10px;
+  box-shadow: 5px 3px 2px #aaa;
+  cursor: pointer;
+}
+
+/* 検索結果 */
+.video-row {
+  display: flex;
+  flex-direction: row;
+}
+.video-infomations-wrapper {
+  padding-left: 1rem;
+  max-width: 80vw;
+  overflow-x: hidden;
+  max-width: calc(100% - 140px);
+}
+.video-image {
+  text-align: center;
+  width: 140px;
+}
+.video-image img {
+  max-width: 140px;
+}
+.video-title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.video-posted-at {
+  font-size: 0.8rem;
+}
+.video-tags {
+  overflow: hidden;
+  font-size: 0.7rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.video-counters {
+  overflow: hidden;
+  font-size: 0.8rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 640px) {
+  input, button {
+    font-size: 1.2rem;
+  }
+  /* #nico-search-form  */
+}

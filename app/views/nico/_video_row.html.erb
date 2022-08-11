@@ -1,0 +1,18 @@
+<% video_url = 'https://nico.ms/' + video[:contentId] %>
+<div class='video-row'>
+  <div class='video-image'>
+    <a href='<%= video_url %>' target='__blank'>
+      <img src="<%= video[:thumbnailUrl] %>"/>
+    </a>
+  </div>
+  <div class='video-infomations-wrapper'>
+    <div class='video-title'>
+      <%= link_to video[:title], video_url, { target: '__blank'} %>
+    </div>
+    <div class='video-counters'>
+      Views: <%= video[:viewCounter] %> | Comments: <%= video[:commentCounter] %> | Like: <%= video[:likeCounter]%>
+    </div>
+    <div class='video-posted-at'><%= DateTime.parse(video[:startTime]).strftime('%Y/%m/%d %H:%M')  %></div>
+    <div class='video-tags'><%= video[:tags] %></div>
+  </div>
+</div>

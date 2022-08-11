@@ -2,7 +2,7 @@
 <p>hello <%= @user.totp_id %> !!</p>
 <div>
     <ul>
-        <li><%= link_to 'nico/games', nico_games_path %></li>
+        <li><%= link_to 'nico', nico_path %></li>
     </ul>
 </div>
 <p><%= button_to "Log out", logout_path, method: :delete %></p>

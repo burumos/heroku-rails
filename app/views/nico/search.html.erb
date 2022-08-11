@@ -1,7 +1,61 @@
 <h1>nico/search</h1>
-<div>
-  <%= debug @response %>
+
+<%= render partial: 'head_links' %>
+
+<%= form_with id: 'nico-search-form', method: 'GET' do |form| %>
+  <table>
+    <tbody>
+      <tr>
+        <td class='label-cell'>
+          <%= form.label :query, 'Words' %>
+        </td>
+        <td>
+          <%= form.text_field :query, value: @query %>
+        </td>
+      </tr>
+      <tr>
+        <td class='label-cell'>
+          <%= form.label :limit, 'Limit' %>
+        </td>
+        <td>
+          <%= form.text_field :limit, type: 'number', value: @limit %>
+        </td>
+      </tr>
+      <tr>
+        <td class='label-cell'>
+          <%= form.label :minimum_views, 'Minimum views' %>
+        </td>
+        <td>
+          <%= form.text_field :minimum_views, type: 'number', value: @minimum_views, step: 100 %>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <%= form.submit 'Search' %>
+          <button id='add-condtion' type='button'>Add</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
+
+<div id='condition-list' data-conditions='<%= @conditions.to_json %>'>
 </div>
-<div>
-  <%= debug @response_body %>
+
+<div id='condition-row-format' class='condition-row'>
+  <span class='apply-button'>
+    <span class='query'></span> |
+    <span class='limit'></span>個 |
+    最低<span class='minimum-views'></span>再生
+    <button type='button' class='delete-button'>削除</button>
+  </span>
 </div>
+
+<div class='video-list'>
+  <% @videos.each do |video|  %>
+    <%= render partial: 'video_row', locals: {video: video } %>
+  <% end %>
+</div>
+
+<%= javascript_include_tag 'nico_search_form.js' %>
