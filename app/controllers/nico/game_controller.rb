@@ -30,7 +30,7 @@ class Nico::GameController < ApplicationController
     videos.concat(fetch_video(query: 'tropico', limit: 3, smallest_views: 300))
     videos.concat(fetch_video(query: 'cities:skylines', limit: 5, smallest_views: 500))
     videos.concat(fetch_video(query: 'ets2 -MMD -切り抜き', limit: 5, smallest_views: 100))
-    @videos.sort_by! { |video| video[:startTime] }.reverse!
+    videos.sort_by! { |video| video[:startTime] }.reverse!
   end
 
   def fetch_video(query:, limit:, smallest_views:)
