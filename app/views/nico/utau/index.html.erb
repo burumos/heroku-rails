@@ -1,0 +1,28 @@
+<h1>Utau</h1>
+
+<%= render partial: 'nico/head_links' %>
+
+<%= form_with id: 'nico-search-form', method: 'GET' do |form| %>
+  <div class='vocaloid-form-wrapper'>
+    <div class='date-field-wrapper'>
+      <button id='prev-button' type='button'>
+        <i class="las la-caret-left"></i>
+      </button>
+      <%= form.text_field :date, type: 'date', value: @date.strftime('%Y-%m-%d') %>
+      <button id='next-button' type='button'>
+        <i class="las la-caret-right"></i>
+      </button>
+    </div>
+    <div>
+      <%= form.submit 'Search' %>
+    </div>
+  </div>
+<% end %>
+
+<div class='video-list'>
+  <% @videos.each do |video|  %>
+    <%= render partial: 'nico/video_row', locals: {video: video } %>
+  <% end %>
+</div>
+
+<%= javascript_include_tag 'nico_vocaloid.js' %>

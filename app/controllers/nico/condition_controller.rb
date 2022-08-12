@@ -3,7 +3,8 @@ class Nico::ConditionController < ApplicationController
 
   def create
     condition = NicoCondition.new condition_params.merge({ user_id: @user.id })
-    rails StandardError, 'Invalid data.' unless condition.valid?
+    raise StandardError, 'Invalid data.' unless condition.valid?
+
     condition.save
     render json: { result: 'success', data: condition }
   end

@@ -8,5 +8,7 @@ Rails.application.routes.draw do
     get 'search' => 'nico/search#index'
     post 'condition' => 'nico/condition#create'
     delete 'condition/:id' => 'nico/condition#destroy'
+    get 'vocaloid' => 'nico/vocaloid#index'
+    get 'utau' => 'nico/utau#index'
   end
 end
