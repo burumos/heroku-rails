@@ -1,6 +1,6 @@
 require "test_helper"
 
-class NicoControllerTest < ActionDispatch::IntegrationTest
+class Nico::SearchControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

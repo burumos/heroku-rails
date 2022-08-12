@@ -1,9 +1,8 @@
-class NicoController < ApplicationController
+class Nico::SearchController < ApplicationController
+  include NicoApi
   before_action :logged_in
 
-  def index; end
-
-  def search
+  def index
     @query = params[:query]
     @limit = params[:limit].presence || 10
     @minimum_views = params[:minimum_views].presence || 1000
@@ -12,45 +11,7 @@ class NicoController < ApplicationController
     @conditions = NicoCondition.where(user_id: @user.id)
   end
 
-  def create_condition
-    condition = NicoCondition.new condition_params.merge({ user_id: @user.id })
-    rails StandardError, 'Invalid data.' unless condition.valid?
-    condition.save
-    render json: { result: 'success', data: condition }
-  end
-
-  def destroy_condition
-    condition = NicoCondition.find(params[:id])
-    raise StandardError, 'You don\'t have permission.' if condition.user_id != @user.id
-
-    condition.destroy
-    render json: { result: 'success', condition: }
-  end
-
   private
-
-  def condition_params
-    params.permit(:query, :limit, :minimum_views)
-  end
-
-  def fetch_nico(query:, targets: 'title,description,tags', sort: '-viewCounter', limit: 10, filters: {})
-    uri = URI 'https://api.search.nicovideo.jp/api/v2/snapshot/video/contents/search'
-    uri.query = build_nico_query(query:, targets:, sort:, limit:, filters:)
-    response = HTTP.get uri.to_s
-    JSON.parse(response.body.to_s, symbolize_names: true)[:data]
-  end
-
-  def build_nico_query(query:, targets:, sort:, limit:, filters:)
-    {
-      q: query,
-      filters:,
-      targets:,
-      _sort: sort,
-      _context: 'rails-nk',
-      fields: 'contentId,title,tags,viewCounter,likeCounter,lengthSeconds,thumbnailUrl,commentCounter,startTime',
-      _limit: limit
-    }.to_param
-  end
 
   def test_data
     [
