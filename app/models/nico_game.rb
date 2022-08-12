@@ -1,0 +1,2 @@
+class NicoGame < ApplicationRecord
+end

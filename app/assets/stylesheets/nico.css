@@ -12,6 +12,22 @@
 #nico-search-form input {
   margin-top: 0.3rem;
 }
+.vocaloid-form-wrapper {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  display: inline-block;
+}
+.vocaloid-form-wrapper .date-field-wrapper {
+  margin-bottom: 0.5rem;
+}
+.vocaloid-form-wrapper input {
+  font-size: 1.3rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.vocaloid-form-wrapper button {
+  font-size: 1.25rem;
+}
 
 /* 検索条件リスト */
 #condition-row-format {

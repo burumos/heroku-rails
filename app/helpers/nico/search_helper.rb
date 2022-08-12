@@ -1,0 +1,2 @@
+module Nico::SearchHelper
+end

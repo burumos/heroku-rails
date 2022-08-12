@@ -1,0 +1,21 @@
+<h1>Nico / Games</h1>
+
+<%= render partial: 'nico/head_links' %>
+
+<div><%= flash[:notice] %></div>
+
+<%= form_with id: 'nico-game-form', method: 'POST' do |form| %>
+  <div>
+    <%= form.submit 'Fetch' %>
+  </div>
+<% end %>
+
+<div>
+  Last updated: <%= last_updated %>
+</div>
+
+<div class='video-list'>
+  <% @videos.each do |video|  %>
+    <%= render partial: 'nico/video_row', locals: {video: video } %>
+  <% end %>
+</div>
