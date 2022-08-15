@@ -1,4 +1,3 @@
-# coding: utf-8
 class SessionsController < ApplicationController
   def new
     redirect_to root_path if logged_in?
@@ -22,6 +21,7 @@ class SessionsController < ApplicationController
   end
 
   private
+
   def try_login(totp_id, pass)
     totp_key = ENV["totp_#{totp_id}"]
     return false if totp_key.blank?
