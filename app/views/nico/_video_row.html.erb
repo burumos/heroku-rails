@@ -10,7 +10,9 @@
       <%= link_to video[:title], video_url, { target: '__blank'} %>
     </div>
     <div class='video-counters'>
-      Views: <%= video[:viewCounter] %> | Comments: <%= video[:commentCounter] %> | Like: <%= video[:likeCounter]%>
+      <i class="las la-play"></i> <%= video[:viewCounter] %>
+      <i class="las la-comment"></i> <%= video[:commentCounter] %>
+      <i class="las la-heart"></i> <%= video[:likeCounter]%>
     </div>
     <div class='video-posted-at'><%= DateTime.parse(video[:startTime]).strftime('%Y/%m/%d %H:%M')  %></div>
     <div class='video-tags'><%= video[:tags] %></div>

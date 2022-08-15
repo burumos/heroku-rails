@@ -1,0 +1,2 @@
+module Nico::ConditionHelper
+end

@@ -3,10 +3,14 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  get 'nico' => 'nico#index'
   scope 'nico', as: 'nico' do
-    get 'search' => 'nico#search'
-    post 'condition' => 'nico#create_condition'
-    delete 'condition/:id' => 'nico#destroy_condition'
+    root 'nico/top#index'
+    get 'search' => 'nico/search#index'
+    post 'condition' => 'nico/condition#create'
+    delete 'condition/:id' => 'nico/condition#destroy'
+    get 'game' => 'nico/game#index'
+    post 'game' => 'nico/game#create'
+    get 'vocaloid' => 'nico/vocaloid#index'
+    get 'utau' => 'nico/utau#index'
   end
 end

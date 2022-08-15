@@ -1,6 +1,6 @@
 <h1>nico/search</h1>
 
-<%= render partial: 'head_links' %>
+<%= render partial: 'nico/head_links' %>
 
 <%= form_with id: 'nico-search-form', method: 'GET' do |form| %>
   <table>
@@ -54,7 +54,7 @@
 
 <div class='video-list'>
   <% @videos.each do |video|  %>
-    <%= render partial: 'video_row', locals: {video: video } %>
+    <%= render partial: 'nico/video_row', locals: {video: video } %>
   <% end %>
 </div>
 

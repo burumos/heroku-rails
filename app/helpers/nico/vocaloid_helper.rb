@@ -1,0 +1,2 @@
+module Nico::VocaloidHelper
+end
