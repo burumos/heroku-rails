@@ -1,13 +1,13 @@
 <% video_url = 'https://nico.ms/' + video[:contentId] %>
 <div class='video-row'>
   <div class='video-image'>
-    <a href='<%= video_url %>' target='__blank'>
+    <a href='<%= video_url %>' target='_blank'>
       <img src="<%= video[:thumbnailUrl] %>"/>
     </a>
   </div>
   <div class='video-infomations-wrapper'>
     <div class='video-title'>
-      <%= link_to video[:title], video_url, { target: '__blank'} %>
+      <%= link_to video[:title], video_url, { target: '_blank'} %>
     </div>
     <div class='video-counters'>
       <i class="las la-play"></i> <%= video[:viewCounter] %>
