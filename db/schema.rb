@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_12_043518) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_21_001545) do
   create_table "nico_conditions", force: :cascade do |t|
     t.integer "user_id"
     t.string "query"
@@ -31,7 +31,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_12_043518) do
     t.string "totp_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["totp_id"], name: "index_users_on_totp_id", unique: true
+    t.string "password_digest"
+    t.string "login_id"
+    t.index ["login_id"], name: "index_users_on_login_id", unique: true
   end
 
 end

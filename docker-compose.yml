@@ -1,13 +1,5 @@
 version: '3'
 services:
-  db:
-    image: postgres
-    volumes:
-      - ./tmp/db:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: password
-    ports:
-      - "15432:5432"
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
@@ -16,8 +8,6 @@ services:
       - bundle_install:/usr/local/bundle
     ports:
       - "3000:3000"
-    depends_on:
-      - db
     environment:
       - totp_test=4SSJVGL7KWTPXU7WWH7IMPCZ744MLKCV
 volumes:

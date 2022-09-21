@@ -1,18 +1,18 @@
-# coding: utf-8
 class SessionsController < ApplicationController
   def new
     redirect_to root_path if logged_in?
   end
 
   def create
-    totp_id = params[:id]
-    pass = params[:totp]
+    user = User.find_by(login_id: login_param[:login_id])
+    unless user&.authenticate(login_param[:password])
+      flash.now[:danger] = 'ログイン失敗'
+      render 'new'
+      return
+      # return redirect_to login_path, flash: { danger: 'ログイン失敗' } 
+    end
 
-    return redirect_to login_path, flash: { message: 'ログイン失敗' } unless try_login totp_id, pass
-
-    user = insert_user_if_not_exist totp_id
-    session[:user_id] = user.id
-
+    log_in user
     redirect_to root_path
   end
 
@@ -22,24 +22,13 @@ class SessionsController < ApplicationController
   end
 
   private
-  def try_login(totp_id, pass)
-    totp_key = ENV["totp_#{totp_id}"]
-    return false if totp_key.blank?
 
-    if ROTP::TOTP.new(totp_key).verify(pass).nil?
-      flash[:id] = totp_id
-      return false
-    end
-    true
+  def login_param
+    params.require(:session).permit(:login_id, :password)
   end
 
-  def insert_user_if_not_exist(totp_id)
-    user = User.find_by totp_id: totp_id
-    if user.nil?
-      user = User.new totp_id: totp_id
-      user.save
-    end
-    user
+  def log_in(user)
+    session[:user_id] = user.id
   end
 
   def logout

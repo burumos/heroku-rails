@@ -2,7 +2,7 @@ FROM ruby:3.1.2
 
 ENV WORKSPACE=/usr/local/src
 
-RUN apt update -qq && apt install -y postgresql-client
+RUN apt update -qq && apt install -y sqlite3
 
 # create user and group.
 RUN groupadd -r --gid 1000 rails && \
